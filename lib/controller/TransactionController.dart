@@ -27,6 +27,7 @@ class TransactionController extends GetxController {
   addNewTransaction() {
     String title = titleController.text;
     String amount = amountController.text;
+    print('----<><><>-----$amount');
     // ignore: unused_local_variable
     final newTx = Transaction(
         name: title,
@@ -37,5 +38,9 @@ class TransactionController extends GetxController {
     transactionList.add(newTx);
     titleController.clear();
     amountController.clear();
+  }
+  deleteTransaction(index)
+  {
+    transactionList.removeAt(index);
   }
 }
