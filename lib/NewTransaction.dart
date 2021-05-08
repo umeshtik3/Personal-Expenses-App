@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:personalexpensesapp/controller/TransactionController.dart';
 
 class NewTransaction extends StatelessWidget {
   final Function addtx;
@@ -6,6 +8,8 @@ class NewTransaction extends StatelessWidget {
   NewTransaction({this.addtx});
   final TextEditingController titleController = TextEditingController();
   final TextEditingController amountController = TextEditingController();
+  TransactionController txController = Get.put(TransactionController());
+  
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -26,6 +30,7 @@ class NewTransaction extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () {
+                  
                   addtx(titleController.text,
                       double.parse(amountController.text));
                 },

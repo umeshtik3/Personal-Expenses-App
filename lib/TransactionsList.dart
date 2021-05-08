@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:personalexpensesapp/controller/TransactionController.dart';
 import 'Transaction.dart';
 
 class TransactionsList extends StatelessWidget {
+  TransactionController txController = Get.put(TransactionController());
   final List<Transaction> txlist;
   TransactionsList(this.txlist);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Obx(() => Container(
         height: 300,
         child: ListView.builder(
           itemBuilder: (cntx, index) {
@@ -22,7 +25,7 @@ class TransactionsList extends StatelessWidget {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.purple, width: 2.5)),
                       child: Text(
-                        '\$${txlist[index].amount}',
+                        '\$${txController.transactionList[index].amount}',
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -31,14 +34,15 @@ class TransactionsList extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        txlist[index].name,
+                        txController.transactionList[index].name,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        DateFormat.yMMMd().format(txlist[index].txDate),
+                        DateFormat.yMMMd()
+                            .format(txController.transactionList[index].txDate),
                         style: TextStyle(color: Colors.grey),
                       )
                     ],
@@ -47,7 +51,7 @@ class TransactionsList extends StatelessWidget {
               ),
             );
           },
-          itemCount: txlist.length,
-        ));
+          itemCount: txController.transactionList.length,
+        )));
   }
 }
