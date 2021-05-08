@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personalexpensesapp/NewTransaction.dart';
 import 'package:personalexpensesapp/UserTransaction.dart';
 
 void main() {
@@ -23,15 +24,24 @@ class MyHomePage extends StatelessWidget {
   final String title;
 
   MyHomePage(this.title);
+
+  showingModalSheet(context) {
+    return showModalBottomSheet(
+        context: context,
+        builder: (ctx) {
+          return NewTransaction();
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
+      appBar: AppBar(title: Text(title), actions: [
+        IconButton(
+            icon: Icon(Icons.add), onPressed: () => showingModalSheet(context))
+      ]),
       body: SingleChildScrollView(
-              child: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -42,7 +52,7 @@ class MyHomePage extends StatelessWidget {
                 child: Text('CHART!'),
               ),
             ),
-           
+
             // Card(
             //   child: Container(
             //     padding: EdgeInsets.all(10),
@@ -104,9 +114,14 @@ class MyHomePage extends StatelessWidget {
             //     ),
             //   );
             // }).toList())
-           UserTransaction()
+            UserTransaction()
           ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => showingModalSheet(context),
       ),
     );
   }

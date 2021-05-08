@@ -15,7 +15,7 @@ class TransactionController extends GetxController {
   }
 
   void fetchTransaction() async {
-    List temp = [
+    List<Transaction> temp = [
       Transaction(
           id: 1, amount: 40.89, name: 'You Tube', txDate: DateTime.now()),
       Transaction(
@@ -25,6 +25,7 @@ class TransactionController extends GetxController {
   }
 
   addNewTransaction(String title, double amount) {
+    // ignore: unused_local_variable
     final newTx =
         Transaction(name: title, amount: amount, txDate: DateTime.now(), id: 1);
   }

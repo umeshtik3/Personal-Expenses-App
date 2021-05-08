@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:personalexpensesapp/controller/TransactionController.dart';
 
+// ignore: must_be_immutable
 class NewTransaction extends StatelessWidget {
   final Function addtx;
 
@@ -30,7 +31,7 @@ class NewTransaction extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () {
-                  
+
                   addtx(titleController.text,
                       double.parse(amountController.text));
                 },
