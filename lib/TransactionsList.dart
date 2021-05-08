@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:personalexpensesapp/controller/TransactionController.dart';
-import 'Transaction.dart';
 
 // ignore: must_be_immutable
 class TransactionsList extends StatelessWidget {
   TransactionController txController = Get.put(TransactionController());
-  final List<Transaction> txlist;
-  TransactionsList(this.txlist);
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => Container(
-        height: 300,
+        height: 400,
         child: ListView.builder(
           itemBuilder: (cntx, index) {
             return Card(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personalexpensesapp/NewTransaction.dart';
-import 'package:personalexpensesapp/UserTransaction.dart';
+import 'package:personalexpensesapp/TransactionsList.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -114,7 +115,7 @@ class MyHomePage extends StatelessWidget {
             //     ),
             //   );
             // }).toList())
-            UserTransaction()
+            TransactionsList()
           ],
         ),
       ),

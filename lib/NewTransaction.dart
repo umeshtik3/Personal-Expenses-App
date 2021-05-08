@@ -7,10 +7,9 @@ class NewTransaction extends StatelessWidget {
   final Function addtx;
 
   NewTransaction({this.addtx});
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController amountController = TextEditingController();
+
   TransactionController txController = Get.put(TransactionController());
-  
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -20,20 +19,19 @@ class NewTransaction extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             TextField(
-              controller: titleController,
+              controller: txController.titleController,
               decoration: InputDecoration(labelText: 'Title'),
             ),
             TextField(
               keyboardType: TextInputType.number,
               maxLength: 2,
-              controller: amountController,
+              controller: txController.amountController,
               decoration: InputDecoration(labelText: 'Amount'),
             ),
             TextButton(
                 onPressed: () {
-
-                  addtx(titleController.text,
-                      double.parse(amountController.text));
+                  txController.addNewTransaction();
+                 Navigator.pop(context);
                 },
                 child: Text('Add Transaction'))
           ],
